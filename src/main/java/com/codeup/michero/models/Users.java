@@ -1,6 +1,7 @@
 package com.codeup.michero.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name ="Users")
@@ -53,7 +54,7 @@ public class Users {
 
     public void setEmail(String email){this.email = email;}
 
-    public String getProfile_pic(){return profile_pic}
+    public String getProfile_pic(){return profile_pic;}
 
     public void setProfile_pic(String profile_pic){this.profile_pic = profile_pic;}
 
