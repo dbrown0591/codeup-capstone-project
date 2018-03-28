@@ -29,7 +29,7 @@ public class Users {
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private List<Reviews> post;
+    private List<Post> post;
 
     public Users(String username, String password, String email, String profile_pic){
         this.username = username;
@@ -58,8 +58,8 @@ public class Users {
 
     public void setProfile_pic(String profile_pic){this.profile_pic = profile_pic;}
 
-    public List<Reviews> getReviews(){return post;}
+    public List<Post> getReviews(){return post;}
 
-    public void setReviews(List<Reviews> reviews){this.post = reviews;}
+    public void setReviews(List<Post> reviews){this.post = reviews;}
 
 }

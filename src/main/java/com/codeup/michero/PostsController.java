@@ -1,8 +1,9 @@
 package com.codeup.michero;
 
 import com.codeup.michero.daos.UsersRepository;
-import com.codeup.michero.models.Reviews;
+import com.codeup.michero.models.Post;
 import com.codeup.michero.models.Users;
+import com.codeup.michero.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,22 +22,22 @@ public class PostsController {
 
     @RequestMapping("/posts")
     public String index(Model viewAndModel) {
-        /*List<Reviews> posts = Arrays.asList(
-            new Reviews("Reviews A", "Body A"),
-            new Reviews("Reviews B", "Body B"),
-            new Reviews("Reviews C", "Body C")
+        /*List<Post> posts = Arrays.asList(
+            new Post("Post A", "Body A"),
+            new Post("Post B", "Body B"),
+            new Post("Post C", "Body C")
         );*/
-        Iterable<Reviews> posts = postService.findAll();
+        Iterable<Post> post = postService.findAll();
 
-        viewAndModel.addAttribute("posts", posts);
+        viewAndModel.addAttribute("posts", post);
 
         return "posts/index";
     }
 
     @RequestMapping("/posts/{id}")
     public String show(@PathVariable long id, Model viewAndModel) {
-        //Reviews post = new Reviews("Test post", "Test body");
-        Reviews post = postService.findOne(id);
+        //Post post = new Post("Test post", "Test body");
+        Post post = postService.findOne(id);
 
         viewAndModel.addAttribute("post", post);
 
@@ -45,12 +46,12 @@ public class PostsController {
 
     @RequestMapping("/posts/create")
     public String showCreateForm(Model viewModel) {
-        viewModel.addAttribute("post", new Reviews());
+        viewModel.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    public String createPost(@ModelAttribute Reviews post) {
+    public String createPost(@ModelAttribute Post post) {
         Users users = usersRepository.findOne(2L);
         post.setUsers(users);
         postService.save(post);
@@ -59,13 +60,13 @@ public class PostsController {
 
     @GetMapping("/posts/{id}/edit")
     public String showEditForm(@PathVariable long id, Model viewAndModel) {
-        Reviews post = postService.findOne(id);
+        Post post = postService.findOne(id);
         viewAndModel.addAttribute("post", post);
         return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String updatePost(@PathVariable long id, @ModelAttribute Reviews post) {
+    public String updatePost(@PathVariable long id, @ModelAttribute Post post) {
         post.setId(id);
         postService.save(post);
         return "redirect:/posts";
