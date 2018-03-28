@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name ="Users")
+@Table(name ="users")
 public class Users {
     @Id
     @GeneratedValue
@@ -19,7 +19,7 @@ public class Users {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable=true)
+    @Column(nullable = true)
     private String profile_pic;  //Recommend using a string.
     // You will use this column on the table to store the location
     // of the image on your file system, not the image itself.
@@ -29,7 +29,7 @@ public class Users {
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private List<Reviews> reviews;
+    private List<Reviews> post;
 
     public Users(String username, String password, String email, String profile_pic){
         this.username = username;
@@ -58,8 +58,8 @@ public class Users {
 
     public void setProfile_pic(String profile_pic){this.profile_pic = profile_pic;}
 
-    public List<Reviews> getReviews(){return reviews;}
+    public List<Reviews> getReviews(){return post;}
 
-    public void setReviews(List<Reviews> reviews){this.reviews = reviews;}
+    public void setReviews(List<Reviews> reviews){this.post = reviews;}
 
 }

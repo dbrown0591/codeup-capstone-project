@@ -3,25 +3,29 @@ package com.codeup.michero.models;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "reviews")
 public class Reviews {
-    private String title;
-    private String description;
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private long id;
+
+    @Column(nullable=false)
+    private String title;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
     @ManyToOne
     private Users users;
 
-    public Users getUsers(){return users;}
 
-    public void setUsers(Users users){this.users = users;}
-
-    public Reviews(String title, String description){
+    public Reviews(String title, String description, Users users){
         this.title =title;
         this.description = description;
+        this.users =users;
     }
 
     public Reviews(){
@@ -39,6 +43,10 @@ public class Reviews {
     public long getId(){return id;}
 
     public void setId(long id){this.id = id;}
+
+    public Users getUsers(){return users;}
+
+    public void setUsers(Users users){this.users = users;}
 
 
 }

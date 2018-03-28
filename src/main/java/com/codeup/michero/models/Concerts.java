@@ -3,6 +3,7 @@ package com.codeup.michero.models;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "concerts")
 public class Concerts {
