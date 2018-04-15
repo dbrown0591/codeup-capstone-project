@@ -1,8 +1,8 @@
-package com.codeup.michero;
+package com.codeup.michero.controller;
 
 import com.codeup.michero.daos.UsersRepository;
 import com.codeup.michero.models.Post;
-import com.codeup.michero.models.Users;
+import com.codeup.michero.models.User;
 import com.codeup.michero.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,7 +52,7 @@ public class PostsController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post) {
-        Users users = usersRepository.findOne(2L);
+        User users = usersRepository.findOne(2L);
         post.setUsers(users);
         postService.save(post);
         return "redirect:/posts";

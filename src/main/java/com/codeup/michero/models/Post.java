@@ -19,10 +19,10 @@ public class Post{
     private String description;
 
     @ManyToOne
-    private Users users;
+    private User users;
 
 
-    public Post(String title, String description, Users users){
+    public Post(String title, String description, User users){
         this.title =title;
         this.description = description;
         this.users = users;
@@ -44,9 +44,9 @@ public class Post{
 
     public void setId(long id){this.id = id;}
 
-    public Users getUsers(){return users;}
+    public User getUsers(){return users;}
 
-    public void setUsers(Users users){this.users = users;}
+    public void setUsers(User users){this.users = users;}
 
 
 }

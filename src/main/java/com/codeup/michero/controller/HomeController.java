@@ -1,4 +1,4 @@
-package com.codeup.michero;
+package com.codeup.michero.controller;
 
 import com.codeup.michero.daos.ConcertsRepository;
 import com.codeup.michero.models.Concerts;
