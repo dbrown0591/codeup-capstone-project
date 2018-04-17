@@ -1,15 +1,15 @@
 package com.codeup.michero.services;
 
 import com.codeup.michero.daos.UsersRepository;
+import com.codeup.michero.models.User;
 import com.codeup.michero.models.UserWithRoles;
-import org.apache.tomcat.jni.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDetailsLoader implements UserDetailsService {
+public class UserDetailsLoader  implements UserDetailsService {
     private final UsersRepository users;
 
     public UserDetailsLoader(UsersRepository users) {
@@ -26,3 +26,4 @@ public class UserDetailsLoader implements UserDetailsService {
         return new UserWithRoles(user);
     }
 }
+

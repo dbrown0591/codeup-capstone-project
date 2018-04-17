@@ -1,4 +1,5 @@
-package com.codeup.michero.controller;
+package com.codeup.michero.models;
+
 
 import javax.persistence.*;
 import java.util.List;

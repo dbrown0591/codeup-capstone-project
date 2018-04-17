@@ -1,12 +1,10 @@
 package com.codeup.michero.models;
 
-import com.codeup.michero.controller.Ad;
-
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name ="user")
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue
@@ -91,5 +89,4 @@ public class User {
     public void setAds(List<Ad> ads) {
         this.ads = ads;
     }
-
 }

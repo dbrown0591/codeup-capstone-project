@@ -22,9 +22,9 @@ public class HomeController {
     @GetMapping("/dao-test")
     @ResponseBody
     public Iterable<Concerts> daoTest() {
-//        Iterable<Ad> ads = adDao.findAll();
+//        Iterable<AdController> ads = adDao.findAll();
 //
-//        for (Ad ad : ads) {
+//        for (AdController ad : ads) {
 //            System.out.println("---");
 //            System.out.println("  #" + ad.getId());
 //            System.out.println("  title: " + ad.getTitle());
@@ -32,7 +32,7 @@ public class HomeController {
 //        }
 
 //        // we are hardcoding values for demonstration, in practice, these would come from a form
-//        Ad ad = new Ad("title c", "description c");
+//        AdController ad = new AdController("title c", "description c");
 //        adDao.save(ad);
 
         return adDao.findAll();

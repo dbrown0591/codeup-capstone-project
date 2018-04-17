@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
+<head></head>
+<body>
+
+<nav id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
+    <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li sec:authorize="!isAuthenticated()">
+            <a href="/login">Login</a>
+        </li>
+        <li sec:authorize="isAnonymous()">
+            <a href="/users/sign-up">Sign Up</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <a href="/posts/create">Make a Post</a>
+        </li>
+        <!--Change to isAuthenticated for links that we only want to show to logged in users-->
+        <li sec:authorize="isAuthenticated()">
+            <a href="/posts">View Post</a>
+        </li>
+        <li>
+            <form th:action="@{/logout}" th:method="post">
+                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+            </form>
+        </li>
+
+        <li sec:authorize="isAuthenticated()" th:text="${#authentication.principal.username}">
+        </li>
+        <!--The line above is causing my user name to show in the navbar.-->
+    </ul>
+</nav>
+
+</body>
+</html>

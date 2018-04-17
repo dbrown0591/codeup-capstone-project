@@ -1,13 +1,10 @@
-package com.codeup.michero.controller;
-
-import com.codeup.michero.models.Images;
-import org.apache.tomcat.jni.User;
+package com.codeup.michero.models;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name ="concertads")
+@Table(name ="ads")
 public class Ad {
     @Id
     @GeneratedValue

@@ -1,7 +1,7 @@
 package com.codeup.michero.services;
 
-import com.codeup.michero.controller.Ad;
 import com.codeup.michero.daos.AdRepository;
+import com.codeup.michero.models.Ad;
 import org.springframework.stereotype.Service;
 
 @Service
