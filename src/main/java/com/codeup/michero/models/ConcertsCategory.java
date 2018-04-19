@@ -15,6 +15,4 @@ public class ConcertsCategory {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "categories")
-    private List<Ad> ads;
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue
@@ -20,11 +20,10 @@ public class User {
     private String email;
 
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
 //    private List<Post> posts;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Ad> ads;
+
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -82,11 +81,4 @@ public class User {
 //        this.posts = posts;
 //    }
 
-    public List<Ad> getAds() {
-        return ads;
-    }
-
-    public void setAds(List<Ad> ads) {
-        this.ads = ads;
-    }
 }
