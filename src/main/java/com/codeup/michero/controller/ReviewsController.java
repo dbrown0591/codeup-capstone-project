@@ -52,8 +52,8 @@ public class ReviewsController {
 
     @PostMapping("/reviews/create")
     public String createPost(@ModelAttribute Reviews post) {
-        User users = usersRepository.findOne(2L);
-        post.setUsers(users);
+        User user = usersRepository.findOne(2L);
+        post.setUsers(user);
         postService.save(post);
         return "redirect:/reviews";
     }

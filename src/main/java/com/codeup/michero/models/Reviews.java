@@ -19,10 +19,12 @@ public class Reviews {
     private String description;
 
     @ManyToOne
+    @JoinColumn (name = "users_id")
     private User users;
 
 
-    public Reviews(String title, String description, User users){
+    public Reviews(long id, String title, String description, User users){
+        this.id=id;
         this.title =title;
         this.description = description;
         this.users = users;

@@ -7,7 +7,7 @@
 <div th:replace="fragments/navbar :: mainNavbar"></div>
 <!--Added nav bar but it's not showing everything and it shows "dbrown" at the top-->
 <!--need to find out how to get rid of that.-->
-<form action="/reviews/create" method="post" th:object="${post}">
+<form th:action="@{/reviews/create}" method="post" th:object="${post}">
     Title:
     <input th:field="*{title}" />
     <br/>

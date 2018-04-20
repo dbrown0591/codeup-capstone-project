@@ -19,9 +19,13 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+//
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviews")
 //    private List<Reviews> reviews;
+
+
+
+    //Uncommenting the code above seems to disconnect me from local host
 
 
 
