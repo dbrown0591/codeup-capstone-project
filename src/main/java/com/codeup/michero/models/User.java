@@ -21,7 +21,7 @@ public class User {
 
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-//    private List<Post> posts;
+//    private List<Reviews> reviews;
 
 
 
@@ -73,12 +73,12 @@ public class User {
         this.email = email;
     }
 
-//    public List<Post> getPosts() {
-//        return posts;
+//    public List<Reviews> getReviews() {
+//        return reviews;
 //    }
-//
-//    public void setPosts(List<Post> posts) {
-//        this.posts = posts;
+////
+//    public void setReviews(List<Reviews> reviews) {
+//        this.reviews = reviews;
 //    }
 
 }

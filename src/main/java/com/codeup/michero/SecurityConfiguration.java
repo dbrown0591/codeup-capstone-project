@@ -35,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             /* Login configuration */
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/posts") // users's home page, it can be any URL
+                .defaultSuccessUrl("/reviews") // users's home page, it can be any URL
                 .permitAll()
                 .and()
                 .logout()
@@ -49,8 +49,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/posts/create", // only authenticated users can create ads
-                        "/posts/{id}/edit", // only authenticated users can edit ads
+                        "/reviews/create", // only authenticated users can create ads
+                        "/reviews/{id}/edit", // only authenticated users can edit ads
                         // We're adding these 2 lines in order to get the User from the security
                         // context in the AdController, otherwise `getPrincipal()` might return
                         // a string instead of a User

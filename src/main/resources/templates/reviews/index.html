@@ -7,10 +7,10 @@
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
 <!--Added this div to have a nav bar but it needs to be fixed.-->
-<div th:each="post : ${posts}">
-    <h1 th:text="${post.title}"></h1>
-    <p th:text="${post.body}"></p>
-    <a class="btn btn-warning" th:href="@{/posts/{id}/edit(id=${post.id})}">Edit this post</a>
+<div th:each="post : ${reviews}">
+    <h1 th:text="${reviews.title}"></h1>
+    <p th:text="${reviews.description}"></p>
+    <a class="btn btn-warning" th:href="@{/reviews/{id}/edit(id=${reviews.id})}">Edit this post</a>
 </div>
 
 

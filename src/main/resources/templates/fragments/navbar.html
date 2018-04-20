@@ -16,11 +16,11 @@
             <a href="/users/sign-up">Sign Up</a>
         </li>
         <li sec:authorize="isAuthenticated()">
-            <a href="/posts/create">Make a Post</a>
+            <a href="/reviews/create">Make a Post</a>
         </li>
         <!--Change to isAuthenticated for links that we only want to show to logged in users-->
         <li sec:authorize="isAuthenticated()">
-            <a href="/posts">View Post</a>
+            <a href="/reviews">View Post</a>
         </li>
         <li>
             <form th:action="@{/logout}" th:method="post">
