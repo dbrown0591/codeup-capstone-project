@@ -10,29 +10,32 @@ public class User {
     @GeneratedValue
     private long id;
 
-    @Column(unique = true, nullable = false)
-    private String username;
+    @Column(nullable = false, unique = true)
+    private String email;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false, unique = true)
-    private String email;
+    @Column
+    private String profile_pic;
 
-//
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reviews")
-//    private List<Reviews> reviews;
+    @Column(unique = true, nullable = false)
+    private String username;
 
 
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<Reviews> reviews;
 
     //Uncommenting the code above seems to disconnect me from local host
+    //Before correction I typed mappedBy = "reviews"
 
-
-
-    public User(String username, String password, String email) {
-        this.username = username;
+    public User(String email, String password, String profile_pic, String username) {
+        this.username = email;
         this.password = password;
-        this.email = email;
+        this.profile_pic = profile_pic;
+        this.email = username;
     }
 
     public User() {
@@ -42,8 +45,9 @@ public class User {
     public User(User copy) {
         id = copy.id;
         email = copy.email;
-        username = copy.username;
         password = copy.password;
+        profile_pic = copy.profile_pic;
+        username = copy.username;
     }
     public long getId() {
         return id;
@@ -53,12 +57,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -69,12 +73,16 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getprofile_pic() {return profile_pic;}
+
+    public void setprofile_pic(String profile_pic){this.profile_pic = profile_pic;}
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 //    public List<Reviews> getReviews() {
