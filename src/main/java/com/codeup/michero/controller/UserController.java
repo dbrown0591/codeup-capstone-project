@@ -29,6 +29,7 @@ public class UserController {
     public String singUpNewUser(@ModelAttribute User user) {
         String hash = encoder.encode(user.getPassword());
         user.setPassword(hash);
+        user.setprofile_pic("");
         usersRepository.save(user);
         return "redirect:/login";
     }

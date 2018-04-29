@@ -16,7 +16,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column(nullable = true)
     private String profile_pic;
 
     @Column(unique = true, nullable = false)
