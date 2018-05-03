@@ -26,7 +26,7 @@ public class User {
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private List<Reviews> reviews;
+    private List<Review> reviews;
 
     //Uncommenting the code above seems to disconnect me from local host
     //Before correction I typed mappedBy = "reviews"
@@ -85,11 +85,11 @@ public class User {
         this.username = username;
     }
 
-//    public List<Reviews> getReviews() {
+//    public List<Review> getReviews() {
 //        return reviews;
 //    }
 ////
-//    public void setReviews(List<Reviews> reviews) {
+//    public void setReviews(List<Review> reviews) {
 //        this.reviews = reviews;
 //    }
 

@@ -30,6 +30,10 @@ public class UserController {
         String hash = encoder.encode(user.getPassword());
         user.setPassword(hash);
         user.setprofile_pic("");
+        //Was getting error after running program saying that
+        //profile_pic cannot be null.
+        //Added user.setprofile_pic("") <---empty string
+        //needed a place to add a profile pic on the sign up page.
         usersRepository.save(user);
         return "redirect:/login";
     }

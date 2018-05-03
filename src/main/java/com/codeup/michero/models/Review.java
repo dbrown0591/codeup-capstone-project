@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "reviews")
-public class Reviews {
+public class Review {
 
     @Id
     @GeneratedValue
@@ -23,14 +23,14 @@ public class Reviews {
     private User users;
 
 
-    public Reviews(long id, String title, String description, User users){
+    public Review(long id, String title, String description, User users){
         this.id=id;
         this.title =title;
         this.description = description;
         this.users = users;
     }
 
-    public Reviews(){
+    public Review(){
 
     }
 
