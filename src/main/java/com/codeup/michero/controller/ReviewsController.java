@@ -35,8 +35,8 @@ public class ReviewsController {
     @RequestMapping("/reviews/{id}")
     public String show(@PathVariable long id, Model viewAndModel) {
         //Review post = new Review("Test post", "Test body");
-        Review post = reviewService.findOne(id);
-        viewAndModel.addAttribute("post", post);
+        Review review = reviewService.findOne(id);
+        viewAndModel.addAttribute("review", review);
         return "reviews/show";
     }
 
@@ -56,8 +56,8 @@ public class ReviewsController {
 
     @GetMapping("/reviews/{id}/edit")
     public String showEditForm(@PathVariable long id, Model viewAndModel) {
-        Review post = reviewService.findOne(id);
-        viewAndModel.addAttribute("post", post);
+        Review review = reviewService.findOne(id);
+        viewAndModel.addAttribute("review", review);
         return "reviews/edit";
     }
 
