@@ -28,10 +28,7 @@ public class ReviewsController {
 //            new Review("Review C", "Body C")
 //        );
         Iterable<Review> list_of_reviews = reviewService.findAll();
-        for(Review r : list_of_reviews){
-            viewAndModel.addAttribute("reviews", r);
-        }
-
+            viewAndModel.addAttribute("list_of_reviews", list_of_reviews);
         return "reviews/index";
     }
 
