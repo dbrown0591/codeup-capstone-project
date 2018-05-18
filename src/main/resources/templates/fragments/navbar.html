@@ -16,14 +16,17 @@
             <a href="/users/sign-up">Sign Up</a>
         </li>
         <li sec:authorize="isAuthenticated()">
-            <a href="/reviews/create">Create a Review</a>
+            <a href="/reviews/create">Make a Review</a>
         </li>
         <li sec:authorize="isAuthenticated()">
-            <a href="/users/delete">Delete Account</a>
+            <a href="/users/delete/">Delete Account</a>
         </li>
         <!--Change to isAuthenticated for links that we only want to show to logged in users-->
         <li sec:authorize="isAuthenticated()">
             <a href="/reviews">Reviews</a>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <a href="/concerts/create">Create a Concert</a>
         </li>
         <li sec:authorize="isAuthenticated()">
             <form th:action="@{/logout}" th:method="post">

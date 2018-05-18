@@ -1,7 +1,7 @@
 package com.codeup.michero.controller;
 
 import com.codeup.michero.daos.ConcertsRepository;
-import com.codeup.michero.models.Concerts;
+import com.codeup.michero.models.Concert;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +21,7 @@ public class HomeController {
 
     @GetMapping("/dao-test")
     @ResponseBody
-    public Iterable<Concerts> daoTest() {
+    public Iterable<Concert> daoTest() {
 //        Iterable<AdController> ads = adDao.findAll();
 //
 //        for (AdController ad : ads) {

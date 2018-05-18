@@ -1,9 +1,8 @@
 package com.codeup.michero.daos;
 
-import com.codeup.michero.models.Concerts;
+import com.codeup.michero.models.Concert;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
 
-public interface ConcertsRepository extends CrudRepository<Concerts, Long> {
+public interface ConcertsRepository extends CrudRepository<Concert, Long> {
 }

@@ -15,5 +15,5 @@ public class Images {
     private String url;
 
     @ManyToOne
-    private Concerts concerts;
+    private Concert concert;
 }

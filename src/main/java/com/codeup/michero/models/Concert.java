@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "concerts")
-public class Concerts {
+public class Concert {
     @Id
     @GeneratedValue
     private long id;
@@ -20,6 +20,23 @@ public class Concerts {
     private String genre;
     @Column
     private String location;
+    @ManyToOne
+    @JoinColumn (name = "users_id")
+    private User users;
+
+    public Concert(long id, String title, String description, String price, String genre, String location, User users){
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.price = Integer.parseInt(price);
+        this.genre = genre;
+        this.location = location;
+        this.users = users;
+    }
+
+    public Concert(){
+
+    }
 
     public long getId(){return id;}
 
@@ -44,4 +61,12 @@ public class Concerts {
     public String getLocation(){return location;}
 
     public void setLocation(String location){this.location = location;}
+
+    public User getUsers() {
+        return users;
+    }
+
+    public void setUsers(User users) {
+        this.users = users;
+    }
 }

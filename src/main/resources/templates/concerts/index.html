@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header('All Post')">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="fragments/navbar :: mainNavbar"></div>
+<!--Added this div to have a nav bar but it needs to be fixed.-->
+<div th:each="concert : ${list_of_concerts}">
+    <h1 th:text="${concert.title}"></h1>
+    <p th:text="${concert.description}"></p>
+    <p th:text="${concert.price}"></p>
+    <p th:text="${concert.genre}"></p>
+    <p th:text="${concert.location}"></p>
+    <a class="btn btn-warning" th:href="@{/concerts/{id}/edit(id=${concert.id})}">Edit this post</a>
+    <!--I had an error saying property of field 'id' cannot be found on null-->
+    <!--The problem was that in the code above I had ${reviews.id} it needs to be ${review.id}-->
+</div>
+
+
+
+</body>
+</html>

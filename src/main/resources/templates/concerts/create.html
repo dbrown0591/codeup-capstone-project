@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header('New Post')">
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div th:replace="fragments/navbar :: mainNavbar"></div>
+<!--Added nav bar but it's not showing everything and it shows "dbrown" at the top-->
+<!--need to find out how to get rid of that.-->
+<form th:action="@{/concerts/create}" method="post" th:object="${concertPost}">
+    Title:
+    <input th:field="*{title}" />
+    <br/>
+    <br/>
+    Description:
+    <textarea th:field="*{description}" style="width: 130px;height:130px;"></textarea>
+    <!--Change to text area above-->
+    <br />
+    <br />
+    Price:
+    <input th:field="*{price}" />
+    <br />
+    <br />
+    Genre:
+    <input th:field="*{genre}" />
+    <br />
+    <br />
+    Location:
+    <input th:field="*{location}" />
+    <br />
+    <br />
+
+    <input type="submit"/>
+</form>
+<footer th:include="fragments/footer :: footer"></footer>
+<div th:replace="fragments/scripts :: scripts"></div>
+
+</body>
+</html>
