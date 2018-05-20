@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Logout</title>
+<head th:replace="fragments/header :: main-header('Logout')">
 </head>
 <body>
 <nav>
@@ -15,6 +13,8 @@
         </li>
     </ul>
 </nav>
+
+<footer th:include="fragments/footer :: footer"></footer>
 
 </body>
 </html>

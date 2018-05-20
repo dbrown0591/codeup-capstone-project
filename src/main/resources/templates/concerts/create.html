@@ -1,39 +1,75 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: main-header('New Post')">
-    <meta charset="UTF-8"/>
+<head th:replace="fragments/header :: main-header('Create')">
 </head>
 <body>
+<!--navbar-->
 <div th:replace="fragments/navbar :: mainNavbar"></div>
-<!--Added nav bar but it's not showing everything and it shows "dbrown" at the top-->
-<!--need to find out how to get rid of that.-->
-<form th:action="@{/concerts/create}" method="post" th:object="${concertPost}">
-    Title:
-    <input th:field="*{title}" />
-    <br/>
-    <br/>
-    Description:
-    <textarea th:field="*{description}" style="width: 130px;height:130px;"></textarea>
-    <!--Change to text area above-->
-    <br />
-    <br />
-    Price:
-    <input th:field="*{price}" />
-    <br />
-    <br />
-    Genre:
-    <input th:field="*{genre}" />
-    <br />
-    <br />
-    Location:
-    <input th:field="*{location}" />
-    <br />
-    <br />
 
-    <input type="submit"/>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-4">
+            <!--first col-->
+        </div>
+        <div class="col-md-4">
+            <!--form-->
+            <form th:action="@{/concerts/create}" method="post" th:object="${concertPost}" class="form-group" enctype="multipart/form-data">
+                Title:<br />
+                <input class="form-control" th:field="*{title}" />
+                <br/>
+                <br/>
+                Description:<br />
+                <textarea class="form-control" th:field="*{description}" style="height:130px;"></textarea>
+                <br/>
+                <br/>
+                Price:<br />
+                <input id="price" class="form-control"  th:field="*{price}"/>
+                <script>document.getElementById('price').setAttribute('value', '$')</script>
+                <br/>
+                <br/>
+                Genre:<br />
+                <input class="form-control" th:field="*{genre}" />
+                <br/>
+                <br/>
+                Location:<br />
+                <input class="form-control" th:field="*{location}" />
+                <br/>
+                <br/>
+                Date and Time:<br />
+                <!--calendar plugin-->
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                        <input th:field="*{datetime}" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar">&nbsp;Choose Date</i></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker();
+                    });
+                </script>
+                <!--end calendar plugin-->
+
+                <!--picture upload-->
+                <label for="image">Upload a file!</label>
+                <input class="form-control" id="image" name="image" type="file" multiple="multiple" />
+                <!--end picture upload-->
+                <br/>
+                <br/>
+                <!--submit button-->
+                <input class="form-control btn btn-primary" type="submit"/>
+            </form>
+        </div>
+    </div> <!--end row-->
+</div> <!--end container-->
+
+
+
 <footer th:include="fragments/footer :: footer"></footer>
-<div th:replace="fragments/scripts :: scripts"></div>
 
 </body>
 </html>

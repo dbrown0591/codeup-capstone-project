@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: main-header('All Post')">
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+<head th:replace="fragments/header :: main-header('List of Reviews')">
 </head>
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
@@ -15,7 +13,7 @@
     <!--The problem was that in the code above I had ${reviews.id} it needs to be ${review.id}-->
 </div>
 
-
+<footer th:include="fragments/footer :: footer"></footer>
 
 </body>
 </html>

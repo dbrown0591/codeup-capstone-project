@@ -1,16 +1,29 @@
 
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head></head>
+<head>
+</head>
 <body>
 
 <footer th:fragment="footer" class="footer">
-    <footer class="footer">
-        <div class="container">
-            <!-- Using #dates : utility methods for java.util.Date objects: -->
-            <span class="text-muted">Michero blog &copy; <span th:text="${#dates.year(#dates.createNow())}"></span></span>
-        </div>
-    </footer>
+    <div class="container text-center">
+        <!-- Using #dates : utility methods for java.util.Date objects: -->
+        <span class="text-muted">Michero blog &copy; <span th:text="${#dates.year(#dates.createNow())}"></span></span>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+    <!--jquery for tempdominus-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--moment.js for tempdominus-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <!--tempusdominus calendar datetime picker scripts-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/js/tempusdominus-bootstrap-4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha18/css/tempusdominus-bootstrap-4.min.css" />
+
 </footer>
 
 </body>

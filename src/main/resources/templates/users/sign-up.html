@@ -1,8 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: main-header('Sign up!')">
-</head>
+<head th:replace="fragments/header :: main-header('Sign-up')" />
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
 <h1>Create an account</h1>
@@ -18,5 +17,8 @@
 
     <input value="Sign me up!" type="submit" />
 </form>
+
+<footer th:include="fragments/footer :: footer"></footer>
+
 </body>
 </html>

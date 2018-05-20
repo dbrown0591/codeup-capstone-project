@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: main-header('New Post')">
-    <meta charset="UTF-8"/>
+<head th:replace="fragments/header :: main-header('Create')">
 </head>
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
@@ -9,7 +8,7 @@
 <!--need to find out how to get rid of that.-->
 <form th:action="@{/reviews/create}" method="post" th:object="${post}">
     Title:
-    <input th:field="*{title}" />
+    <input class="form-control" th:field="*{title}" />
     <br/>
     <br/>
     Description:
@@ -18,8 +17,8 @@
     <br />
     <input type="submit"/>
 </form>
+
 <footer th:include="fragments/footer :: footer"></footer>
-<div th:replace="fragments/scripts :: scripts"></div>
 
 </body>
 </html>

@@ -6,39 +6,85 @@
 <head></head>
 <body>
 
-<nav id="my-nav" class="navbar navbar-default" th:fragment="mainNavbar">
-    <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li sec:authorize="!isAuthenticated()">
-            <a href="/login">Login</a>
-        </li>
-        <li sec:authorize="isAnonymous()">
-            <a href="/users/sign-up">Sign Up</a>
-        </li>
-        <li sec:authorize="isAuthenticated()">
-            <a href="/reviews/create">Make a Review</a>
-        </li>
-        <li sec:authorize="isAuthenticated()">
-            <a href="/users/delete/">Delete Account</a>
-        </li>
-        <!--Change to isAuthenticated for links that we only want to show to logged in users-->
-        <li sec:authorize="isAuthenticated()">
-            <a href="/reviews">Reviews</a>
-        </li>
-        <li sec:authorize="isAuthenticated()">
-            <a href="/concerts/create">Create a Concert</a>
-        </li>
-        <li sec:authorize="isAuthenticated()">
-            <form th:action="@{/logout}" th:method="post">
-                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
-            </form>
-        </li>
+<!--new nav-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="mainNavbar">
+    <a class="navbar-brand" href="#">MIC HERO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-        <li sec:authorize="isAuthenticated()" th:text="${#authentication.principal.username}">
-        </li>
-        <!--The line above is causing my users name to show in the navbar.-->
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <!--start of links-->
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li sec:authorize="!isAuthenticated()" class="nav-item">
+                <a class="nav-link"  href="/login">Login</a>
+            </li>
+            <li sec:authorize="isAnonymous()" class="nav-item">
+                <a class="nav-link" href="/users/sign-up">Sign Up</a>
+            </li>
+
+            <!--concerts dropdown-->
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success">Concerts</button>
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/concerts">All Concerts</a>
+                        <a class="dropdown-item" href="/concerts/create">Create</a>
+                    </div>
+                </div>
+            </li>
+
+            &nbsp; &nbsp;
+
+            <!--reviews dropdown-->
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success">Reviews</button>
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/reviews">All Reviews</a>
+                        <a class="dropdown-item" href="/reviews/create">Create</a>
+                    </div>
+                </div>
+            </li>
+
+            <!--end dropdowns-->
+
+            <!--user dropdown-->
+
+            <li sec:authorize="isAuthenticated()"  class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    <i style="font-size: 1.5em" th:text="' '+${#authentication.principal.username}" class="fas fa-user-circle"></i>
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Settings</a>
+                    <a class="dropdown-item" href="/users/delete/">Delete Account</a>
+                    <div class="dropdown-divider"></div>
+                    <form class="dropdown-item" th:action="@{/logout}" th:method="post">
+                        <button class="dropdown-item btn-link btn" style="margin-top: 8px">Logout</button>
+                    </form>
+                </div>
+            </li>
+
+            <li sec:authorize="isAuthenticated()" class="nav-item">
+                <form th:action="@{/logout}" th:method="post">
+                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                </form>
+            </li>
+            <!--end of links-->
+        </ul>
+    </div>
 </nav>
+<!--new nav-->
 
 </body>
 </html>

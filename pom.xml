@@ -72,6 +72,36 @@
 			<artifactId>hibernate-jpamodelgen</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.webjars.bower/tempusdominus-bootstrap-4 -->
+		<dependency>
+			<groupId>org.webjars.bower</groupId>
+			<artifactId>tempusdominus-bootstrap-4</artifactId>
+			<version>5.0.0-alpha8</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.webjars/momentjs -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>momentjs</artifactId>
+			<version>2.20.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.webjars/font-awesome -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>5.0.2</version>
+		</dependency>
 
 
 	</dependencies>

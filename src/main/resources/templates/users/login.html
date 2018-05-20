@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: main-header('Sign up!')">
-    <meta charset="UTF-8" />
-    <!--<meta http-equiv="refresh" content="0; url=localhost:8080/post/create" />-->
-    <title>Log In</title>
-</head>
+<head th:replace="fragments/header :: main-header('Login')" />
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
 <h1>Log In</h1>
@@ -22,8 +18,9 @@
     <input id="password" name="password" type="password" />
     <input type="submit" value="Log In" />
 </form>
-<!--<a href="reviews/create"></a>-->
 
+
+<footer th:include="fragments/footer :: footer"></footer>
 
 </body>
 </html>

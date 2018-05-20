@@ -1,7 +1,12 @@
 package com.codeup.michero.models;
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -20,18 +25,22 @@ public class Concert {
     private String genre;
     @Column
     private String location;
+    @Column(name="datetime", columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datetime;
     @ManyToOne
     @JoinColumn (name = "users_id")
-    private User users;
+    private User user;
 
-    public Concert(long id, String title, String description, String price, String genre, String location, User users){
-        this.id = id;
+    public Concert(long id, String title, String description, String price, String genre, String location, Date dt, User user){
+        this.id=id;
         this.title = title;
         this.description = description;
         this.price = Integer.parseInt(price);
         this.genre = genre;
         this.location = location;
-        this.users = users;
+        this.datetime = dt;
+        this.user = user;
     }
 
     public Concert(){
@@ -62,11 +71,25 @@ public class Concert {
 
     public void setLocation(String location){this.location = location;}
 
-    public User getUsers() {
-        return users;
+    public Date getDatetime() {
+        return datetime;
     }
 
-    public void setUsers(User users) {
-        this.users = users;
+    public void setDatetime(Date datetime) {
+        this.datetime = datetime;
     }
+
+    public String getFormattedDatetime(){
+        SimpleDateFormat df = new SimpleDateFormat( "MMM d, y");
+        SimpleDateFormat dfTime = new SimpleDateFormat("h:mma");
+        return df.format(this.getDatetime())+" at "+dfTime.format(this.getDatetime());
+    }
+
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }
