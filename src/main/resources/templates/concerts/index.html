@@ -4,14 +4,12 @@
 </head>
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
-<!--Added this div to have a nav bar but it needs to be fixed.-->
 <div class="container">
     <div class="row">
-        <div class="offset-md-4">
-            <!--first col-->
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mx-auto">
+            <!--content-->
             <div th:each="concert : ${list_of_concerts}">
+                <img class="image-fluid" th:src="${map.get(concert).get(0)}" />
                 <h1 th:text="${concert.title}"></h1>
                 <p th:text="${concert.description}"></p>
                 <p th:text="${concert.price}"></p>
@@ -19,11 +17,14 @@
                 <p th:text="${concert.location}"></p>
                 <p th:text="${concert.getFormattedDatetime()}"></p>
                 <a class="btn btn-warning" th:href="@{/concerts/{id}/edit(id=${concert.id})}">Edit this concert</a>
+                <a class="btn btn-success" th:href="@{/concerts/{id}/(id=${concert.id})}">View</a>
+                <a class="btn btn-primary" th:href="@{/reviews/concertReviews/{id}/(id=${concert.id})}">Reviews</a>
+                <br /><br />
             </div>
         </div>
     </div>
-
 </div>
+
 
 <footer th:include="fragments/footer :: footer"></footer>
 

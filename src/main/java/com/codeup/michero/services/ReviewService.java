@@ -1,6 +1,8 @@
 package com.codeup.michero.services;
 
 import com.codeup.michero.daos.PostDao;
+import com.codeup.michero.daos.ReviewsRepository;
+import com.codeup.michero.models.Image;
 import com.codeup.michero.models.Review;
 import org.springframework.stereotype.Service;
 
@@ -34,4 +36,7 @@ public class ReviewService {
     public void delete(long id) {
         postDao.delete(id);
     }
+
+    public Iterable<Review> findByConcert_id(long id){ return postDao.findByConcert_id(id); }
+
 }

@@ -24,13 +24,6 @@ public class User {
 
 
 
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private List<Review> reviews;
-
-    //Uncommenting the code above seems to disconnect me from local host
-    //Before correction I typed mappedBy = "reviews"
-
     public User(String email, String password, String profile_pic, String username) {
         this.username = email;
         this.password = password;

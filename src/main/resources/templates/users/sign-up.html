@@ -4,19 +4,30 @@
 <head th:replace="fragments/header :: main-header('Sign-up')" />
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
-<h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-    <label for="username">Username</label>
-    <input id="username" th:field="*{username}" />
 
-    <label for="email">Email</label>
-    <input id="email" th:field="*{email}" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h1 class="text-center">Create an account</h1>
+            <form class="form-group" th:action="@{/sign-up}" method="POST" th:object="${user}">
+                <label for="username">Username</label>
+                <input class="form-control" id="username" th:field="*{username}" />
 
-    <label for="password">Password</label>
-    <input id="password" type="password" th:field="*{password}" />
+                <label for="email">Email</label>
+                <input class="form-control" id="email" th:field="*{email}" />
 
-    <input value="Sign me up!" type="submit" />
-</form>
+                <label for="password">Password</label>
+                <input class="form-control" id="password" type="password" th:field="*{password}" />
+
+                <br />
+
+                <input class="btn btn-block btn-primary" value="Sign me up!" type="submit" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
 
 <footer th:include="fragments/footer :: footer"></footer>
 

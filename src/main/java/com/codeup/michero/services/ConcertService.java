@@ -16,7 +16,8 @@ public class ConcertService {
     // the save method is smart enough to figure out which it needs to do
     // i.e. if the passed object already has an `id` property, update an
     // existing record, if it does not, insert a new record
-    public void save(Concert post) {postDao.save(post);
+    public void save(Concert c) {
+        postDao.save(c);
     }
 
     // we'll need to define the return type as `Iterable` as that is
@@ -33,5 +34,4 @@ public class ConcertService {
     public void delete(long id) {
         postDao.delete(id);
     }
-
 }

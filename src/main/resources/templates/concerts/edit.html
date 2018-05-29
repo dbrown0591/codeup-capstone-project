@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: main-header('Create')">
+<head th:replace="fragments/header :: main-header('Edit')">
 </head>
 <body>
-<!--navbar-->
 <div th:replace="fragments/navbar :: mainNavbar"></div>
 
 <div class="container">
     <div class="row">
-        <div class="offset-md-4">
-            <!--first col-->
-        </div>
-        <div class="col-md-4">
-            <!--form-->
-            <form th:action="@{/concerts/create}" method="post" th:object="${concertPost}" class="form-group" enctype="multipart/form-data">
-                <h1 class="text-center">Create a Concert</h1>
+        <div class="col-md-4 mx-auto">
+            <form class="form-group" th:action="@{/concerts/{id}/edit(id=${concert.id})}" method="post" th:object="${concert}" >
+                <h1 class="text-center">Edit a Concert</h1>
                 Title:<br />
                 <input class="form-control" th:field="*{title}" />
                 <br/>
@@ -23,7 +18,6 @@
                 <br/>
                 Price:<br />
                 <input id="price" class="form-control" th:field="*{price}" />
-                <script>document.getElementById('price').setAttribute('value', '$')</script>
                 <br/>
                 Genre:<br />
                 <input class="form-control" th:field="*{genre}" />
@@ -35,7 +29,7 @@
                 <!--calendar plugin-->
                 <div class="form-group">
                     <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                        <input th:field="*{datetime}" type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+                        <input type="text" name="datetime" th:value="${concert.getFormattedDateTimeForInputs()}" required="required" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
                         <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar">&nbsp;Choose Date</i></div>
 
@@ -50,21 +44,21 @@
                 </script>
                 <!--end calendar plugin-->
 
-                <!--picture upload-->
-                <label for="image">Upload a file!</label>
-                <input class="form-control" id="image" name="image" type="file" multiple="multiple" />
-                <!--end picture upload-->
-                <br/>
-                <!--submit button-->
-                <input class="form-control btn btn-primary" type="submit"/>
+                <br />
+                <input class="btn btn-block btn-success" type="submit" value="Save"/>
+            </form>
+
+            <!--delete button-->
+            <form method="post" th:action="@{/concerts/{id}/delete(id=${concert.id})}">
+                <input type="submit" class="btn btn-block btn-danger" value="Delete This Post" />
             </form>
         </div>
-    </div> <!--end row-->
-</div> <!--end container-->
-
+    </div>
+</div>
 
 
 <footer th:include="fragments/footer :: footer"></footer>
+
 
 </body>
 </html>

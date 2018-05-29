@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header('Profile Page')">
+</head>
+
+<body th:object="${user}">
+
+<div th:replace="fragments/navbar :: mainNavbar"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h1 class="text-center">My Profile</h1>
+            <div class="text-center">
+                <form class="dropdown-item" th:action="@{/logout}" th:method="post">
+                    <button class="dropdown-item btn-link btn" style="margin-top: 8px">Logout</button>
+                </form>
+            </div>
+            <br />
+            <!--info-->
+            <h2>Info:</h2>
+            <img src="" alt="" />
+            <p>Username: <span th:text="${user.getUsername()}"></span></p>
+
+            <br />
+            <!--concerts-->
+            <h2>My Concert's:</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr th:each="concert : ${list_of_concerts}">
+                    <th scope="row" th:text="${concert.getTitle()}"></th>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/concerts/{id}/(id=${concert.id})}">View</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" th:href="@{/concerts/{id}/edit(id=${concert.id})}">Edit</a>
+                    </td>
+                    <td>
+                        <form method="post" th:action="@{/concerts/{id}/delete(id=${concert.id})}">
+                            <input type="submit" class="btn btn-block btn-danger" value="Delete" />
+                        </form>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<footer th:include="fragments/footer :: footer"></footer>
+
+</body>
+</html>

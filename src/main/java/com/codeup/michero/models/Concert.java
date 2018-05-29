@@ -80,9 +80,13 @@ public class Concert {
     }
 
     public String getFormattedDatetime(){
-        SimpleDateFormat df = new SimpleDateFormat( "MMM d, y");
+        SimpleDateFormat dfDate = new SimpleDateFormat("MMM d, y");
         SimpleDateFormat dfTime = new SimpleDateFormat("h:mma");
-        return df.format(this.getDatetime())+" at "+dfTime.format(this.getDatetime());
+        return dfDate.format(this.getDatetime())+" at "+dfTime.format(this.getDatetime());
+    }
+
+    public String getFormattedDateTimeForInputs(){
+        return new SimpleDateFormat("M/d/y h:m a").format(this.getDatetime());
     }
 
     public User getUser() {

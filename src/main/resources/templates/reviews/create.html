@@ -3,20 +3,27 @@
 <head th:replace="fragments/header :: main-header('Create')">
 </head>
 <body>
+
 <div th:replace="fragments/navbar :: mainNavbar"></div>
-<!--Added nav bar but it's not showing everything and it shows "dbrown" at the top-->
-<!--need to find out how to get rid of that.-->
-<form th:action="@{/reviews/create}" method="post" th:object="${post}">
-    Title:
-    <input class="form-control" th:field="*{title}" />
-    <br/>
-    <br/>
-    Description:
-    <textarea th:field="*{description}" style="width: 130px;height:130px;"></textarea>
-    <!--Change to text area above-->
-    <br />
-    <input type="submit"/>
-</form>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <form th:action="@{/reviews/create}" method="post" th:object="${post}">
+                Title:
+                <input class="form-control" th:field="*{title}" />
+                <br/>
+                <br/>
+                Description:
+                <textarea class="form-control" th:field="*{description}"></textarea>
+                <!--Change to text area above-->
+                <br />
+                <input type="submit"/>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <footer th:include="fragments/footer :: footer"></footer>
 

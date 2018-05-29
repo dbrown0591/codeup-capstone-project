@@ -3,7 +3,7 @@
 <head th:replace="fragments/header :: main-header('Login')" />
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
-<h1>Log In</h1>
+
 <div th:if="${param.error}">
     Invalid Username and Password.
 </div>
@@ -11,13 +11,23 @@
     You have been logged out.
 </div>
 
-<form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
-    <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
-    <input type="submit" value="Log In" />
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h1 class="text-center">Log In</h1>
+            <form th:action="@{/login}" method="post">
+                <label for="username">Username:</label>
+                <input class="form-control" id="username" name="username" type="text" />
+                <label for="password">Password:</label>
+                <input class="form-control" id="password" name="password" type="password" />
+                <br />
+                <input class="btn btn-block btn-primary" type="submit" value="Log In" />
+            </form>
+        </div>
+    </div>
+</div>
+
+
 
 
 <footer th:include="fragments/footer :: footer"></footer>

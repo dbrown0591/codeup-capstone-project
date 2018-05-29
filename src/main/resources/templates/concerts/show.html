@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header(${concert.title})">
+</head>
+
+<body>
+
+<div th:replace="fragments/navbar :: mainNavbar"></div>
+
+<!--show the single concert-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <img class="image-fluid" th:src="${url_list.get(0)}" />
+            <h1 th:text="${concert.title}"></h1>
+            <p th:text="${concert.getFormattedDatetime()}"></p>
+            <p th:text="${'$'+concert.price+' per person'}"></p>
+            <p th:text="${'location: '+concert.location}"></p>
+            <p th:text="${concert.description}"></p>
+            <p th:text="${concert.genre}"></p>
+
+        </div>
+    </div>
+</div>
+
+<!--review form-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h3 class="text-center text-">Leave Review</h3>
+            <form class="form-group" th:action="@{/reviews/create-concert-review/{id}/(id=${concert.id})}" method="post" th:object="${concertReview}">
+                Review Post Title:
+                <input class="form-control" th:field="*{title}" />
+                <br/>
+                Description:
+                <textarea class="form-control" th:field="*{description}"></textarea>
+                <!--Change to text area above-->
+                <br />
+                <input class="btn btn-block btn-primary" type="submit"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!--footer-->
+<footer th:include="fragments/footer :: footer"></footer>
+
+</body>
+</html>

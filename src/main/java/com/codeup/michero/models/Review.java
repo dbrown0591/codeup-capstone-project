@@ -19,15 +19,18 @@ public class Review {
     private String description;
 
     @ManyToOne
-    @JoinColumn (name = "users_id")
-    private User users;
+    @JoinColumn (name = "user_id")
+    private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "concert_id")
+    private Concert concert;
 
-    public Review(long id, String title, String description, User users){
+    public Review(long id, String title, String description, User user){
         this.id=id;
         this.title =title;
         this.description = description;
-        this.users = users;
+        this.user = user;
     }
 
     public Review(){
@@ -46,9 +49,19 @@ public class Review {
 
     public void setId(long id){this.id = id;}
 
-    public User getUsers(){return users;}
+    public User getUser() {
+        return user;
+    }
 
-    public void setUsers(User users){this.users = users;}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    public Concert getConcert() {
+        return concert;
+    }
 
+    public void setConcert(Concert concert) {
+        this.concert = concert;
+    }
 }

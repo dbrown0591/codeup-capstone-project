@@ -29,7 +29,7 @@
             <!--concerts dropdown-->
             <li sec:authorize="isAuthenticated()" class="nav-item">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-success">Concerts</button>
+                    <a href="/concerts"><button type="button" class="btn btn-success">Concerts</button></a>
                     <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
@@ -42,22 +42,6 @@
 
             &nbsp; &nbsp;
 
-            <!--reviews dropdown-->
-            <li sec:authorize="isAuthenticated()" class="nav-item">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-success">Reviews</button>
-                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/reviews">All Reviews</a>
-                        <a class="dropdown-item" href="/reviews/create">Create</a>
-                    </div>
-                </div>
-            </li>
-
-            <!--end dropdowns-->
-
             <!--user dropdown-->
 
             <li sec:authorize="isAuthenticated()"  class="nav-item dropdown">
@@ -65,9 +49,19 @@
                     <i style="font-size: 1.5em" th:text="' '+${#authentication.principal.username}" class="fas fa-user-circle"></i>
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Profile</a>
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="/users/delete/">Delete Account</a>
+                    <a class="dropdown-item" href="/profile/">Profile</a>
+                    <a id="delete-account-link" onclick="confirm_delete()" class="dropdown-item">Delete Account</a>
+                    <script>
+                        function confirm_delete(){
+                            var x = document.getElementById("delete-account-link");
+                            if(confirm("Are you sure?")){
+                                // delete the account
+                                window.location.href="/users/delete/";
+                            } else {
+                                // do nothing
+                            }
+                        }
+                    </script>
                     <div class="dropdown-divider"></div>
                     <form class="dropdown-item" th:action="@{/logout}" th:method="post">
                         <button class="dropdown-item btn-link btn" style="margin-top: 8px">Logout</button>
@@ -75,11 +69,11 @@
                 </div>
             </li>
 
-            <li sec:authorize="isAuthenticated()" class="nav-item">
-                <form th:action="@{/logout}" th:method="post">
-                    <button class="btn-link btn" style="margin-top: 8px">Logout</button>
-                </form>
-            </li>
+            <!--<li sec:authorize="isAuthenticated()" class="nav-item">-->
+                <!--<form th:action="@{/logout}" th:method="post">-->
+                    <!--<button class="btn-link btn" style="margin-top: 8px">Logout</button>-->
+                <!--</form>-->
+            <!--</li>-->
             <!--end of links-->
         </ul>
     </div>

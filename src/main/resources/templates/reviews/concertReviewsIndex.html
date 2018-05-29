@@ -5,8 +5,9 @@
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
 <!--Added this div to have a nav bar but it needs to be fixed.-->
-<div th:each="review : ${list_of_reviews}">
+<div th:each="review : ${concertReviews}">
     <h1 th:text="${review.title}"></h1>
+    <p th:text="${'By: '+review.getUser().getUsername()}"></p>
     <p th:text="${review.description}"></p>
     <a class="btn btn-warning" th:href="@{/reviews/{id}/edit(id=${review.id})}">Edit this post</a>
     <a class="btn btn-success" th:href="@{/reviews/{id}/(id=${review.id})}">View</a>

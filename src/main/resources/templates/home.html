@@ -9,7 +9,19 @@
 <body>
 <div th:replace="fragments/navbar :: mainNavbar"></div>
 
-<h1>Welcome!, this is the homepage</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="jumbotron">
+                <h1 class="display-4">Mic Hero</h1>
+                <p class="lead">A website where users can create, view, and edit concerts. As well as leave reviews after attending to share their experiences.</p>
+                <hr class="my-4" />
+                <p>The freshest website to hit the scene in 2018.</p>
+                <a class="btn btn-primary btn-lg" href="/concerts" role="button">Checkout Concerts</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer th:include="fragments/footer :: footer"></footer>
 

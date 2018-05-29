@@ -2,14 +2,15 @@ package com.codeup.michero.controller;
 
 import com.codeup.michero.daos.UsersRepository;
 import com.codeup.michero.models.User;
-import com.codeup.michero.services.UserDetailsLoader;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,20 @@ public class UserController {
         return "users/sign-up";
     }
 
+    @GetMapping("/users/delete/")
+    public String delete(HttpServletRequest r, HttpServletResponse resp){
+        // grab id
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        long id = user.getId();
+        // log the user out
+        //Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        r.getSession().invalidate();
+        SecurityContextHolder.clearContext();
+        // delete the user
+        usersRepository.delete(id);
+        // redirect to home
+        return "redirect:/";
+    }
     @PostMapping("/sign-up")
     public String singUpNewUser(@ModelAttribute User user) {
         String hash = encoder.encode(user.getPassword());
@@ -44,18 +59,5 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @GetMapping("/users/delete/")
-    public String delete(HttpServletRequest r, HttpServletResponse resp){
-        // grab id
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        long id = user.getId();
-        // log the user out
-        r.getSession().invalidate();
-        SecurityContextHolder.clearContext();
-        // delete the user
-        usersRepository.delete(id);
-        // print a confirmation ex. thanks for using my service
-        return "redirect:/";
-    }
 
 }

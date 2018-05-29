@@ -1,9 +1,7 @@
 package com.codeup.michero.services;
 
 import com.codeup.michero.daos.ImageRepository;
-import com.codeup.michero.daos.PostDao;
 import com.codeup.michero.models.Image;
-import com.codeup.michero.models.Review;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,4 +34,6 @@ public class ImageService {
     public void delete(long id) {
         imageRepository.delete(id);
     }
+
+    public Iterable<Image> findByConcert_id(long id){ return imageRepository.findByConcert_id(id); }
 }

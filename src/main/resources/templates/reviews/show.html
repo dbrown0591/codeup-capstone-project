@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: main-header(${reviews.title})">
+<head th:replace="fragments/header :: main-header(${review.title})">
 </head>
 
 <body>
-<h1 th:text="${reviews.title}"></h1>
-<p th:text="${reviews.description}"></p>
+
+<div th:replace="fragments/navbar :: mainNavbar"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h1 th:text="${review.title}"></h1>
+            <p th:text="${review.description}"></p>
+        </div>
+    </div>
+</div>
+
+
 
 <footer th:include="fragments/footer :: footer"></footer>
 
