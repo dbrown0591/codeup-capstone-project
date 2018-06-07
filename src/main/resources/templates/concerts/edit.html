@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 mx-auto">
-            <form class="form-group" th:action="@{/concerts/{id}/edit(id=${concert.id})}" method="post" th:object="${concert}" >
+            <form class="form-group" th:action="@{/concerts/{id}/edit(id=${concert.id})}" method="post" th:object="${concert}" enctype="multipart/form-data">
                 <h1 class="text-center">Edit a Concert</h1>
                 Title:<br />
                 <input class="form-control" th:field="*{title}" />

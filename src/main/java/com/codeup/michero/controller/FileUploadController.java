@@ -3,6 +3,7 @@ package com.codeup.michero.controller;
 import com.codeup.michero.models.Concert;
 import com.codeup.michero.models.Image;
 import com.codeup.michero.services.ImageService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,13 +25,20 @@ public class FileUploadController {
         this.imageService = is;
     }
 
+
+//    private String uploadPath = "/Users/damionbrown/IdeaProjects/michero/src/main/resources/static/uploads/images";
+
+    @Value("${file-upload-path}")
+    private String uploadPath;
+
     @RequestMapping("/imageupload")
     public void uploadImages(HttpServletRequest req,
                              @ModelAttribute Concert c, Model m,
                              List<MultipartFile> images_list){
         // get images
         List<MultipartFile> images = images_list;
-        String uploadPath = req.getSession().getServletContext().getRealPath("");
+
+
 
         // store images
         if(images != null && images.size() > 0){
@@ -47,7 +55,8 @@ public class FileUploadController {
                 System.out.println("value of directory:"+uploadPath); // debug
 
                 // transfer file to destination
-                File destFile = new File(uploadPath+fileName);
+                File destFile = new File(uploadPath + "/" + fileName);
+                System.out.println("destFile: " + destFile);
                 try{
                     mf.transferTo(destFile);
                 } catch(IOException e){

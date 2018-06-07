@@ -37,10 +37,11 @@ public class ConcertController {
     public ConcertController(ConcertService concertService,
                              UsersRepository usersRepository,
                              ImageService imageService,
+                             FileUploadController fc,
                              ReviewService reviewService) {
         this.concertService = concertService; // This the first time we assign something to postService
         this.usersRepository = usersRepository;
-        this.fileUploadController = new FileUploadController(imageService);
+        this.fileUploadController = fc;
         this.reviewService = reviewService;
         this.is = imageService;
     }
@@ -128,8 +129,30 @@ public class ConcertController {
     }
 
     @PostMapping("/concerts/{id}/edit")
-    public String updatePost(@PathVariable long id, @ModelAttribute Concert post) {
+    public String updatePost(@PathVariable long id, @ModelAttribute Concert post, HttpServletRequest req,
+                             @RequestParam(name="image") List<MultipartFile> mf,
+                             Model model) {
         post.setId(id);
+        // save the concert post
+        // fill out the concert object
+        // get current user
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        // set user to concert post
+        post.setUser(user);
+        // save the concert post
+        concertService.save(post);
+
+
+        // find the old images associated with this concert
+        Iterable<Image> images = is.findByConcert_id(post.getId());
+        // delete them
+        for (Image image : images) {
+            is.delete(image.getId());
+        }
+
+        // save the images
+        fileUploadController.uploadImages(req, post, model, mf);
+
         concertService.save(post);
         return "redirect:/concerts";
     }

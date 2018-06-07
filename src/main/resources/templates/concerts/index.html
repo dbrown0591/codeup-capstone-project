@@ -9,7 +9,7 @@
         <div class="col-md-4 mx-auto">
             <!--content-->
             <div th:each="concert : ${list_of_concerts}">
-                <img class="image-fluid" th:src="${map.get(concert).get(0)}" />
+                <img class="image-fluid" th:src="'/uploads/images' + ${map.get(concert).get(0)}" />
                 <h1 th:text="${concert.title}"></h1>
                 <p th:text="${concert.description}"></p>
                 <p th:text="${concert.price}"></p>
