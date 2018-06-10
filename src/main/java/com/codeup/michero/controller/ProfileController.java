@@ -2,13 +2,23 @@ package com.codeup.michero.controller;
 
 import com.codeup.michero.daos.UsersRepository;
 import com.codeup.michero.models.Concert;
+import com.codeup.michero.models.Image;
+import com.codeup.michero.models.Review;
 import com.codeup.michero.models.User;
 import com.codeup.michero.services.ConcertService;
+import com.codeup.michero.services.ImageService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -17,12 +27,18 @@ public class ProfileController {
     // 1. Create an instance variable with your dependency
     private final ConcertService concertService;
     private final UsersRepository usersRepository;
+    private final FileUploadController fileUploadController;
+    private final ImageService is;
 
     // 2. Inject the dependency through the constructor and assign it to your instance variable
     public ProfileController(ConcertService concertService,
-                             UsersRepository usersRepository) {
+                             UsersRepository usersRepository,
+                             ImageService imageService,
+                             FileUploadController fc) {
         this.concertService = concertService;
         this.usersRepository = usersRepository;
+        this.fileUploadController = fc;
+        this.is = imageService;
     }
 
     @RequestMapping("/profile/")
@@ -37,8 +53,9 @@ public class ProfileController {
 
         return "profile/index";
     }
-//
-//    @RequestMapping("/concerts/{id}")
+
+
+    //    @RequestMapping("/concerts/{id}")
 //    public String show(@PathVariable long id, Model viewAndModel) {
 //
 //        // get all the images for this concert
@@ -57,6 +74,13 @@ public class ProfileController {
 //        viewAndModel.addAttribute("concertReview", new Review());
 //        return "concerts/show";
 //    }
+//
+//        // get the concert object
+//        Concert concert = concertService.findOne(id);
+//        viewAndModel.addAttribute("concert", concert);
+//        viewAndModel.addAttribute("url_list", url_list);
+//        viewAndModel.addAttribute("concertReview", new Review());
+
 //
 //    @RequestMapping("/concerts/create")
 //    public String showCreateForm(Model viewModel) {
@@ -105,4 +129,4 @@ public class ProfileController {
 //        return "redirect:/concerts";
 //    }
 
-}
+    }

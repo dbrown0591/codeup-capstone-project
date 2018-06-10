@@ -8,6 +8,7 @@
     <div class="row">
         <div class="col-md-4 mx-auto">
             <!--content-->
+            <!--<form class="form-group" th:action="@{/concerts/{id}}" method="post" th:object="${concertPost}" enctype="multipart/form-data">-->
             <div th:each="concert : ${list_of_concerts}">
                 <img class="image-fluid" th:src="'/uploads/images' + ${map.get(concert).get(0)}" />
                 <h1 th:text="${concert.title}"></h1>
@@ -16,11 +17,12 @@
                 <p th:text="${concert.genre}"></p>
                 <p th:text="${concert.location}"></p>
                 <p th:text="${concert.getFormattedDatetime()}"></p>
-                <a class="btn btn-warning" th:href="@{/concerts/{id}/edit(id=${concert.id})}">Edit concert</a>
+                <a class="btn btn-warning" th:href="@{/concerts/{id}/edit(id=${concert.id})}" >Edit concert</a>
                 <a class="btn btn-success" th:href="@{/concerts/{id}/(id=${concert.id})}">View</a>
                 <a class="btn btn-primary" th:href="@{/reviews/concertReviews/{id}/(id=${concert.id})}">Reviews</a>
                 <br /><br />
             </div>
+            <!--</form>-->
         </div>
     </div>
 </div>
