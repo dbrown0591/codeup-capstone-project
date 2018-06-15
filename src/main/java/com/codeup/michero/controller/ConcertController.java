@@ -75,20 +75,23 @@ public class ConcertController {
     }
 
     @RequestMapping("/concerts/{id}")
-    public String show(@PathVariable long id, Model viewAndModel) {
+    public String show(@PathVariable long id, Model viewAndModel, HttpServletRequest req,
+                       @RequestParam(name="image") List<MultipartFile> mf,
+                       @ModelAttribute Concert post,
+                       Model model) {
 //
-//        post.setId(id);
-//        // save the concert post
-//        // fill out the concert object
-//        // get current user
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        // set user to concert post
-//        post.setUser(user);
-//        // save the concert post
-//        concertService.save(post);
-//
-//        // save the images
-//        fileUploadController.uploadImages(req, post, model, mf);
+        post.setId(id);
+        // save the concert post
+        // fill out the concert object
+        // get current user
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        // set user to concert post
+        post.setUser(user);
+        // save the concert post
+        concertService.save(post);
+
+        // save the images
+        fileUploadController.uploadImages(req, post, model, mf);
 
         Iterable<Image> concertImages = this.is.findByConcert_id(id);
         List<String> url_list = new ArrayList<>();

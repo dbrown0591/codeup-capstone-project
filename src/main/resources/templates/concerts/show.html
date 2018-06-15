@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 mx-auto">
-            <img class="image-fluid" th:src="${url_list.get(0)}" />
+            <img class="image-fluid" th:src="'/uploads/images' + ${map.get(concert).get(0)}" />
             <h1 th:text="${concert.title}"></h1>
             <p th:text="${concert.getFormattedDatetime()}"></p>
             <p th:text="${'$'+concert.price+' per person'}"></p>
@@ -28,7 +28,9 @@
     <div class="row">
         <div class="col-md-4 mx-auto">
             <h3 class="text-center text-">Leave Review</h3>
-            <form class="form-group" th:action="@{/reviews/create-concert-review/{id}/(id=${concert.id})}" method="post" th:object="${concertReview}">
+            <form class="form-group" th:action="@{/reviews/create-concert-review/{id}/(id=${concert.id})}" method="post"  th:object="${concertReview}" enctype="multipart/form-data">
+                <!--<img class="image-fluid" th:src="'/uploads/images' + ${map.get(concert).get(0)}" />-->
+
                 Review Post Title:
                 <input class="form-control" th:field="*{title}" />
                 <br/>
