@@ -10,7 +10,7 @@
             <!--content-->
             <!--<form class="form-group" th:action="@{/concerts/{id}}" method="post" th:object="${concertPost}" enctype="multipart/form-data">-->
             <div th:each="concert : ${list_of_concerts}">
-                <img class="image-fluid" th:src="'/uploads/images' + ${map.get(concert).get(0)}" />
+                <img th:src="${'/uploads/images'} + ${map.get(concert).get(0)}" class="image-fluid" />
                 <h1 th:text="${concert.title}"></h1>
                 <p th:text="${concert.description}"></p>
                 <p th:text="${concert.price}"></p>
