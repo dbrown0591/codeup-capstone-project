@@ -46,7 +46,7 @@ public class ProfileController {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         // get list of concerts
-        Iterable<Concert> list_of_concerts = concertService.findAll();
+        Iterable<Concert> list_of_concerts = concertService.findConcertsForUser(user);
 
         viewAndModel.addAttribute("user", user);
         viewAndModel.addAttribute("list_of_concerts", list_of_concerts);

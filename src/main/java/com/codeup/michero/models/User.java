@@ -35,6 +35,7 @@ public class User {
     }
 
 
+
     public User(User copy) {
         id = copy.id;
         email = copy.email;
@@ -42,6 +43,12 @@ public class User {
         profile_pic = copy.profile_pic;
         username = copy.username;
     }
+    //Saw on Stack overflow that I need a getUserId() to able to create multiple user logins
+    //its still not working...
+    //    public long getUserId(){return id;}
+    //
+    //    public void setUserId(long id){this.id = id;}
+
     public long getId() {
         return id;
     }

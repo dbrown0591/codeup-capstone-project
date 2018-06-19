@@ -33,6 +33,7 @@ public class ConcertController {
     private final ImageService is;
     private final ReviewService reviewService;
 
+
     // 2. Inject the dependency through the constructor and assign it to your instance variable
     public ConcertController(ConcertService concertService,
                              UsersRepository usersRepository,
@@ -51,8 +52,39 @@ public class ConcertController {
         // create a hash map
         HashMap<Concert,List<String>> concertImageMap = new HashMap<>();
 
+
         // get list of concerts
         Iterable<Concert> list_of_concerts = concertService.findAll();
+
+        // go through each concert, find its images, and add it to the map
+        for(Concert c : list_of_concerts){
+            // get all the images for this concert
+            Iterable<Image> concertImages = this.is.findByConcert_id(c.getId());
+            List<String> url_list = new ArrayList<>();
+
+            // extract URLs
+            for(Image i : concertImages){
+                url_list.add(i.getUrl());
+            }
+            // add concert key and image value to map
+            concertImageMap.put(c, url_list);
+        }
+
+        viewAndModel.addAttribute("map", concertImageMap);
+        viewAndModel.addAttribute("list_of_concerts", list_of_concerts);
+
+        return "concerts/index";
+    }
+
+    @GetMapping("/profile")
+    public String usersConcerts(Model viewAndModel) {
+        // create a hash map
+        HashMap<Concert,List<String>> concertImageMap = new HashMap<>();
+
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        // get list of concerts
+        Iterable<Concert> list_of_concerts = concertService.findConcertsForUser(user);
 
         // go through each concert, find its images, and add it to the map
         for(Concert c : list_of_concerts){

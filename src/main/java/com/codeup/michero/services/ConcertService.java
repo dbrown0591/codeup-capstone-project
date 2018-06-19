@@ -2,7 +2,10 @@ package com.codeup.michero.services;
 
 import com.codeup.michero.daos.ConcertsRepository;
 import com.codeup.michero.models.Concert;
+import com.codeup.michero.models.User;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ConcertService {
@@ -33,5 +36,9 @@ public class ConcertService {
 
     public void delete(long id) {
         postDao.delete(id);
+    }
+
+    public List<Concert>findConcertsForUser(User u){
+        return postDao.findByUser(u);
     }
 }
