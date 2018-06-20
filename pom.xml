@@ -60,13 +60,6 @@
 			<version>2.1.2.RELEASE</version>
 		</dependency>
 
-
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.0-api</artifactId>
-			<version>1.0.1.Final</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-jpamodelgen</artifactId>
@@ -77,12 +70,7 @@
 			<artifactId>bootstrap</artifactId>
 			<version>4.0.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.webjars.bower/tempusdominus-bootstrap-4 -->
-		<dependency>
-			<groupId>org.webjars.bower</groupId>
-			<artifactId>tempusdominus-bootstrap-4</artifactId>
-			<version>5.0.0-alpha8</version>
-		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.webjars/momentjs -->
 		<dependency>
